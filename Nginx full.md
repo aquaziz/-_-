@@ -2,7 +2,8 @@ dnf install nginx
 nano /etc/nginx/nginx.conf
 меняем конфиг по заданию 
 в нашем случае 
-![image](https://github.com/user-attachments/assets/60687ed5-1a01-4d7d-9ada-092a0da5c646)
+![image](https://github.com/user-attachments/assets/c56e36a3-0bc5-4db7-9875-ecbafff17819)
+
 
 
 сохраняем 
@@ -12,6 +13,8 @@ _____________________________________________________________________________
 adduser webdev (name по заданию)
 dnf install lighttpd
 nano /etc/lighttpd/ lighttpd.conf
-![[Pasted image 20250305010957.png]]
+![image](https://github.com/user-attachments/assets/12c4e94e-3638-49ea-a22b-d72fdfd70e62)
+
 server port - 81
-![[Pasted image 20250305011030.png]]
+![image](https://github.com/user-attachments/assets/72b07733-6440-4215-8c24-2c9c4c52cc1d)
+
