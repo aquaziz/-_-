@@ -2,7 +2,8 @@ dnf install nginx
 nano /etc/nginx/nginx.conf
 меняем конфиг по заданию 
 в нашем случае 
-![[Pasted image 20250305010720.png]]
+![image](https://github.com/user-attachments/assets/60687ed5-1a01-4d7d-9ada-092a0da5c646)
+
 
 сохраняем 
 проверяем
