@@ -1,5 +1,7 @@
-![[Pasted image 20250206152826.png]]
-![[Pasted image 20250206152838.png]]
+
+![image](https://github.com/user-attachments/assets/e65de49e-adcc-42e5-a0c5-977044277f98)
+![image](https://github.com/user-attachments/assets/f8846986-779e-418f-90e6-9845ecd648e6)
+
 **
 
 |   |   |
