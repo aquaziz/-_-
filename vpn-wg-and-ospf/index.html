@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.795048430274">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.6.0.795048620188">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.6.0">
@@ -21,20 +21,22 @@
     <meta property="og:url" content="/vpn-wg-and-ospf/">
     <meta property="og:title" content="VPN WG AND OSPF">
     <meta property="og:description" content="VPN Выполняется на fw rnd и fw krd Отключаем firewall settings -- advenced -- Disable firewall ( ставим галочку) на fw rnd и fw krd">
+    <meta property="og:image" content="https://github.com/user-attachments/assets/dfdb5e2c-de67-4c73-a571-27dabe5e3635">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="/vpn-wg-and-ospf/">
     <meta property="twitter:title" content="VPN WG AND OSPF">
     <meta property="twitter:description" content="VPN Выполняется на fw rnd и fw krd Отключаем firewall settings -- advenced -- Disable firewall ( ставим галочку) на fw rnd и fw krd">
+    <meta property="twitter:image" content="https://github.com/user-attachments/assets/dfdb5e2c-de67-4c73-a571-27dabe5e3635">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
-    <link href="../resources/css/retype.css?v=3.6.0.795048430274" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=3.6.0.795048620188" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.6.0.795048430274" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.6.0.795048620188" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=3.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.6.0.795048430274" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.6.0.795048620188" data-turbo-eval="false" defer></script>
 </head>
 <body>
     <div id="docs-app" class="relative text-base antialiased text-gray-700 bg-white font-body dark:bg-dark-850 dark:text-dark-300">
@@ -173,19 +175,39 @@
 Выполняется на fw rnd и fw krd
 Отключаем firewall
 settings -- advenced -- Disable firewall ( ставим галочку) на fw rnd и fw krd
-![[Pasted image 20250312011543.png]]</p>
+<figure class="content-center">
+    <img src="https://github.com/user-attachments/assets/dfdb5e2c-de67-4c73-a571-27dabe5e3635" alt="image">
+    <figcaption class="caption">image</figcaption>
+</figure>
+</p>
 <p>подключаемся ко второй машине в нашем случае к fw-krd по его ip адресу
 <em><strong>конфигурация на fw rnd</strong></em></p>
 <p><strong>instance</strong>
-![[Pasted image 20250312011941.png]]
-<strong>peer</strong>
-![[Pasted image 20250312012022.png]]
-<em><strong>конфигурация на fw krd</strong></em></p>
-<p><strong>instance</strong>
-![[Pasted image 20250312012251.png]]</p>
+<figure class="content-center">
+    <img src="https://github.com/user-attachments/assets/f5a8d6ad-780e-42b1-8d54-3c8eda5ddb1e" alt="image">
+    <figcaption class="caption">image</figcaption>
+</figure>
+</p>
 <p><strong>peer</strong>
-![[Pasted image 20250312012354.png]]
-<strong>у вас будут другие ключи</strong>
+<figure class="content-center">
+    <img src="https://github.com/user-attachments/assets/e474eded-5001-4c8e-b527-02264fb26ebb" alt="image">
+    <figcaption class="caption">image</figcaption>
+</figure>
+</p>
+<p><em><strong>конфигурация на fw krd</strong></em></p>
+<p><strong>instance</strong>
+<figure class="content-center">
+    <img src="https://github.com/user-attachments/assets/cdac6ddd-388e-4123-afad-6d22ec09ebd2" alt="image">
+    <figcaption class="caption">image</figcaption>
+</figure>
+</p>
+<p><strong>peer</strong>
+<figure class="content-center">
+    <img src="https://github.com/user-attachments/assets/498363cf-74d7-43fb-b741-e27552c4c27a" alt="image">
+    <figcaption class="caption">image</figcaption>
+</figure>
+</p>
+<p><strong>у вас будут другие ключи</strong>
 <strong>на изображение мы можем заметить - public key из instance с fw rnd мы вставили в peer fw krd.
 и тоже самое в зеркальном порядке , то есть public key из instance с fw krd мы вставили в peer fw rnd</strong></p>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -205,17 +227,40 @@ endport - (6543) в peer мы ставим только на RND</code></pre>
 у нас появляется вкладка Routing - заходим</p>
 <p><em><strong>конфигурация FW-RND</strong></em>
 <strong>general</strong>
-![[Pasted image 20250312013736.png]]</p>
+<figure class="content-center">
+    <img src="https://github.com/user-attachments/assets/539d60d7-1cfd-4fb3-bb86-17ea8c9f4470" alt="image">
+    <figcaption class="caption">image</figcaption>
+</figure>
+</p>
 <p><strong>networks</strong>
-![[Pasted image 20250312013824.png]]
-![[Pasted image 20250312013839.png]]
-затем идем в general - enable
+<figure class="content-center">
+    <img src="https://github.com/user-attachments/assets/28742428-dfd6-45c8-a904-a991d725b4b7" alt="image">
+    <figcaption class="caption">image</figcaption>
+</figure>
+<figure class="content-center">
+    <img src="https://github.com/user-attachments/assets/12536410-0a89-4662-8133-ff9847108636" alt="image">
+    <figcaption class="caption">image</figcaption>
+</figure>
+</p>
+<p>затем идем в general - enable
 Затем идем в firewall - rules - wg0 (правила на fw rnd)
-![[Pasted image 20250312014119.png]]
-<em><strong>такие же действия идем делать на fw rnd (правила)</strong></em>
-![[Pasted image 20250312014320.png]]
-![[Pasted image 20250312014449.png]]
-затем делаем еще одно правила совместно
+<figure class="content-center">
+    <img src="https://github.com/user-attachments/assets/167f2183-05d5-4cff-b629-8034e981ea6f" alt="image">
+    <figcaption class="caption">image</figcaption>
+</figure>
+</p>
+<p><em><strong>такие же действия идем делать на fw rnd (правила)</strong></em>
+<figure class="content-center">
+    <img src="https://github.com/user-attachments/assets/b99d54f3-cae7-4249-aada-e36e6cdd45fb" alt="image">
+    <figcaption class="caption">image</figcaption>
+</figure>
+</p>
+<p><figure class="content-center">
+    <img src="https://github.com/user-attachments/assets/930f057a-7fcf-43b7-b685-9d9bbe9aa749" alt="image">
+    <figcaption class="caption">image</figcaption>
+</figure>
+</p>
+<p>затем делаем еще одно правила совместно
 Это все..Удачи!</p>
 
                                 
