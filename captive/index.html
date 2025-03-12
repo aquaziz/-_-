@@ -9,26 +9,24 @@
     <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
-    <title>Docker</title>
-    <meta name="title" content="Docker">
-    <meta name="description" content="sudo dnf install git cd /opt sudo git clone http://github.com/zammad/zammad-docker-compose sudo mv zammad-docker-compose/">
+    <title>Captive</title>
+    <meta name="title" content="Captive">
+    <meta name="description" content="Captive portal">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/docker/">
+    <link rel="canonical" href="/captive/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/docker/">
-    <meta property="og:title" content="Docker">
-    <meta property="og:description" content="sudo dnf install git cd /opt sudo git clone http://github.com/zammad/zammad-docker-compose sudo mv zammad-docker-compose/">
-    <meta property="og:image" content="https://github.com/user-attachments/assets/c2193025-72c9-4161-b374-8ceef416c554">
+    <meta property="og:url" content="/captive/">
+    <meta property="og:title" content="Captive">
+    <meta property="og:description" content="Captive portal">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/docker/">
-    <meta property="twitter:title" content="Docker">
-    <meta property="twitter:description" content="sudo dnf install git cd /opt sudo git clone http://github.com/zammad/zammad-docker-compose sudo mv zammad-docker-compose/">
-    <meta property="twitter:image" content="https://github.com/user-attachments/assets/c2193025-72c9-4161-b374-8ceef416c554">
+    <meta property="twitter:url" content="/captive/">
+    <meta property="twitter:title" content="Captive">
+    <meta property="twitter:description" content="Captive portal">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -165,30 +163,39 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="docker" class="break-words">
+<doc-anchor-target id="captive" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#docker">#</doc-anchor-trigger>
-        <span>Docker</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#captive">#</doc-anchor-trigger>
+        <span>Captive</span>
     </h1>
 </doc-anchor-target>
-<p>sudo dnf install git
-cd /opt
-sudo git clone <a href="http://github.com/zammad/zammad-docker-compose">http://github.com/zammad/zammad-docker-compose</a>
-sudo mv zammad-docker-compose/* .
-mkdir -p zammad
-nano /etc/docker-compose.yml
-//идем в конец файла и ищем -
-volumes:
-<figure class="content-center">
-    <img src="https://github.com/user-attachments/assets/c2193025-72c9-4161-b374-8ceef416c554" alt="image">
-    <figcaption class="caption">image</figcaption>
-</figure>
-</p>
-<p>делаем так же как на скрине
-sudo dnf install docker-ce docker-ce-cli docker-compose
-systemctl start docker
-sudo docker compose up -d
-systemctl enable docker</p>
+<p>Captive portal</p>
+<p>Заходим в captive portal и создаем zone</p>
+<p>Выбераем интерфейс тот который смотрит в сторону той машины где мы будет работать captive portal
+В Allow inbound выбераем сети к которым будем иметь доступ ( локальные )
+В Authenticate using выбераем Local Database ( это локальная база откуда мы будем брать логин и пароль )
+В конце можно по желанию добавить описание для этой зоны
+Сохраням и выходим</p>
+<p>Заходим в System &gt; Access &gt; Users и там добавляем пользователя под которым мы будем авторизироваться
+Нажимаем + для создания
+х
+Указываем username ( Пример: guest ) пароль ( <a href="mailto:P@ssw0rd">P@ssw0rd</a> ) ( другие настройки я не менял )
+Делаем правила для работы captive portal
+Заходим в Firewall &gt; Rules &gt; OPT2
++</p>
+<p>Нажимаем на + и создаем правила
+Первое правило (разрешаем выход в интернет ) не забываем убрать галочку Quick ( она нужна чтобы правило работало после других и не давало сразу доступ )</p>
+<p>Второе и третье правило (запрещаем доступ к локальной сети)</p>
+<p>Тут я запретил доступ к сети где у меня pc-rnd</p>
+<p>Тут я запретил доступ к сети где у меня dc-rnd ( обязательно надо убрать галочку Quick )
+Четвертое правило ( разрешаем заходить в логин captive portal )</p>
+<p>Пятое и шестое правило ( даем доступ к локальным ресурсам нужные для выполнения задания )</p>
+<p>И по такому же принципу создаем правило с разрешение 53 порта для DNS</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre class="language-none"><code v-pre class="language-none">Далее заходим на nb-rnd
+Открываем браузер и пишем http://192.168.12.1:8000 ( 192.168.12.1 - локальная айпи )</code></pre>
+</doc-codeblock></div>
+<p>*информацию я брал и переделал немного оттуда: <a href="https://www.zenarmor.com/docs/network-security-tutorials/how-to-configure-captive-portal-on-opnsense">https://www.zenarmor.com/docs/network-security-tutorials/how-to-configure-captive-portal-on-opnsense</a></p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -198,20 +205,20 @@ systemctl enable docker</p>
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../chrony-fw-krd/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../!задание-region-2025/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">Chrony fw krd</span>
+                                                <span class="block mt-1">!​Задание REGION 2025</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../kea-dhcp/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../chrony-fw-krd/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
-                                                <span class="block mt-1">KEA DHCP</span>
+                                                <span class="block mt-1">Chrony fw krd</span>
                                             </span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                         </a>
@@ -255,6 +262,6 @@ systemctl enable docker</p>
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Docker", level: 1, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Captive", level: 1, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
