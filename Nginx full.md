@@ -21,7 +21,10 @@ server port - 81
 ```Chmod -R 750 /opt/data```
 
 ```Chown -R lighttpd:lighttpd /opt/data```
-```setenforce 0`` 
-Restorecon -Rv
-nano /etc/selinux/config >
-permissive```
+
+```setenforce 0``` 
+
+```Restorecon -Rv```
+
+```nano /etc/selinux/config >```
+```permissive```
