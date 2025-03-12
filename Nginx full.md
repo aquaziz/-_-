@@ -2,9 +2,7 @@ dnf install nginx
 nano /etc/nginx/nginx.conf
 меняем конфиг по заданию 
 в нашем случае 
-![image](https://github.com/user-attachments/assets/c56e36a3-0bc5-4db7-9875-ecbafff17819)
-
-
+![[Pasted image 20250305010720.png]]
 
 сохраняем 
 проверяем
@@ -13,8 +11,12 @@ _____________________________________________________________________________
 adduser webdev (name по заданию)
 dnf install lighttpd
 nano /etc/lighttpd/ lighttpd.conf
-![image](https://github.com/user-attachments/assets/12c4e94e-3638-49ea-a22b-d72fdfd70e62)
-
+![[Pasted image 20250305010957.png]]
 server port - 81
-![image](https://github.com/user-attachments/assets/72b07733-6440-4215-8c24-2c9c4c52cc1d)
-
+![[Pasted image 20250305011030.png]]
+Chmod -R 750 /opt/data
+Chown -R lighttpd:lighttpd /opt/data
+setenforce 0 
+Restorecon -Rv
+nano /etc/selinux/config
+permissive
