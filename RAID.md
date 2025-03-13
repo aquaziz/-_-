@@ -1,7 +1,7 @@
 
 lsblk (показывает все диски какие у нас имеются)
 
-			mdadm - -create /dev/md0 -l1 -n 2 /dev/sdb /dev/s 
+			mdadm - -create /dev/md0 -l 1 -n2 /dev/sdb /dev/sdc
 
 /dev/md0 - название
 
