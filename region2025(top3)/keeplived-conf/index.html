@@ -9,24 +9,24 @@
     <meta name="generator" content="Retype 3.6.0">
 
     <!-- Primary Meta Tags -->
-    <title>Zabbix</title>
-    <meta name="title" content="Zabbix">
-    <meta name="description" content="dnf install httpd zabbix-apache-conf zabbix-sql-scripts">
+    <title>Keeplived conf</title>
+    <meta name="title" content="Keeplived conf">
+    <meta name="description" content="! Configuration File for keepalived">
 
     <!-- Canonical -->
-    <link rel="canonical" href="/region2025(top3)/zabbix/">
+    <link rel="canonical" href="/region2025(top3)/keeplived-conf/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="/region2025(top3)/zabbix/">
-    <meta property="og:title" content="Zabbix">
-    <meta property="og:description" content="dnf install httpd zabbix-apache-conf zabbix-sql-scripts">
+    <meta property="og:url" content="/region2025(top3)/keeplived-conf/">
+    <meta property="og:title" content="Keeplived conf">
+    <meta property="og:description" content="! Configuration File for keepalived">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="/region2025(top3)/zabbix/">
-    <meta property="twitter:title" content="Zabbix">
-    <meta property="twitter:description" content="dnf install httpd zabbix-apache-conf zabbix-sql-scripts">
+    <meta property="twitter:url" content="/region2025(top3)/keeplived-conf/">
+    <meta property="twitter:title" content="Keeplived conf">
+    <meta property="twitter:description" content="! Configuration File for keepalived">
 
     <script data-cfasync="false">(function () { var el = document.documentElement, m = localStorage.getItem("doc_theme"), wm = window.matchMedia; if (m === "dark" || (!m && wm && wm("(prefers-color-scheme: dark)").matches)) { el.classList.add("dark") } else { el.classList.remove("dark") } })();</script>
 
@@ -163,72 +163,36 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="docs-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="zabbix" class="break-words">
+<doc-anchor-target id="keeplived-conf" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#zabbix">#</doc-anchor-trigger>
-        <span>Zabbix</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#keeplived-conf">#</doc-anchor-trigger>
+        <span>Keeplived conf</span>
     </h1>
 </doc-anchor-target>
-<p>dnf install httpd zabbix-apache-conf zabbix-sql-scripts</p>
-<p>systemctl enable httpddnf install postgresql13 postgresql13-server</p>
-<p>systemctl enable postgresql-13</p>
-<p>/usr/bin/postgresql-13-setup initdb</p>
-<p>systemctl start postgresql-13</p>
-<p>dnf install zabbix-server-pgsql zabbix-web-pgsql zabbix-agent</p>
-<p>nano /etc/php.ini</p>
-<p>_date.timezone = Europe/Moscow #обязательно укажите свой часовой пояс</p>
-<p>post_max_size = 16M</p>
-<p>max_execution_time = 300</p>
-<p>max_input_time = 300_</p>
-<p>su postgres</p>
-<p>psql</p>
-<p>CREATE ROLE zabbix WITH NOSUPERUSER LOGIN PASSWORD &#x27;zabbixpassword&#x27;;</p>
-<p>CREATE DATABASE zabbix WITH OWNER zabbix;</p>
-<p>GRANT ALL PRIVILEGES ON DATABASE zabbix TO zabbix;</p>
-<p>\l</p>
-<p>\q</p>
-<p>exit</p>
-<p>nano /var/lib/pgsql/13/data/postgresql.conf</p>
-<p>_listen_addresses = &#x27;*&#x27;</p>
-<p>port = 5432_</p>
-<p>nano /var/lib/pgsql/13/data/pg_hba.conf</p>
-<p>local all all peer</p>
-<p>#IPv4 local connections:
-host all all 127.0.0.1/32 md5</p>
-<p>#IPv6 local connections:
-host all all ::1/128 md5</p>
-<p>#Allow replication connections from localhost, by a user with the
-#replication privilege.
-local replication all peer</p>
-<p>host zabbix zabbix 127.0.0.1/32 password</p>
-<p>host replication all 127.0.0.1/32 md5</p>
-<p>host replication all ::1/128 md5</p>
-<p>systemctl restart postgresql-13</p>
-<p>zcat /usr/share/zabbix-sql-scripts/postgresql/server.sql.gz | sudo -u zabbix psql zabbix</p>
-<p>passwd postgres</p>
-<p>nano /etc/zabbix/zabbix_server.conf</p>
-<p>DBHost=localhost</p>
-<p>DBName=zabbix</p>
-<p>DBUser=zabbix</p>
-<p>DBPassword=zabbixpassword</p>
-<p>systemctl restart zabbix-server</p>
-<p>systemctl enable zabbix-server</p>
-<p>systemctl restart zabbix-agent</p>
-<p>systemctl enable zabbix-agent</p>
-<p>systemctl restart httpd</p>
-<p>Nginx</p>
-<p>nano /etc/nginx/nginx.conf</p>
-<p>Перед конфигом надо будет поменять порт в nano /etc/httpd/httpd.conf на 82</p>
-<p>Server {</p>
-<p>Listen 80;</p>
-<p>Server_name mon.jun.profi;</p>
-<p>Location / {</p>
-<p>Proxy_pass <a href="http://127.0.0.1:82">http://127.0.0.1:82</a></p>
-<p>Proxy_set_header X-Real-IP $remote_addr;</p>
-<p>Proxy_set_header X-Forwarded-For $reemote_addr;</p>
-<p>Proxy_set_header Host $host;</p>
-<p>Proxy_set_header X-Forwarded-Port $server_port; }</p>
-<p>}</p>
+<p>! Configuration File for keepalived</p>
+<p>vrrp_instance CL_2 {
+state BACKUP
+interface ens3
+virtual_router_id 80
+priority 100
+advert_int 3
+virtual_ipaddress {
+192.168.10.100
+}
+front 2</p>
+<hr>
+<p>! Configuration File for keepalived</p>
+<p>vrrp_instance CL_1 {
+state MASTER
+interface ens3
+virtual_router_id 80
+priority 110
+advert_int 3
+virtual_ipaddress {
+192.168.10.100
+}
+}</p>
+<p>front1</p>
 
                                 
                                 <!-- Required only on API pages -->
@@ -238,16 +202,23 @@ local replication all peer</p>
                             
                                 <nav class="flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../region2025(top3)/vpn-wg-and-ospf/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../region2025(top3)/keeplived/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-gray-400 dark:text-dark-400">Previous</span>
-                                                <span class="block mt-1">VPN WG AND OSPF</span>
+                                                <span class="block mt-1">Keeplived</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-blue-500 dark:text-blue-400 border border-gray-300 hover:border-gray-400 dark:border-dark-650 dark:hover:border-dark-450 rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../region2025(top3)/nginx-full/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-gray-400 dark:text-dark-400">Next</span>
+                                                <span class="block mt-1">Nginx full</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
                                     </div>
                                 </nav>
                             </footer>
@@ -288,6 +259,6 @@ local replication all peer</p>
 
     <div id="docs-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Zabbix", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Keeplived conf", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
